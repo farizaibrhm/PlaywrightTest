@@ -6,16 +6,16 @@ Scenario: login with valid user name and password
   When I enter "validUser" as user name
   And I enter "validPassword" as password
   And I click on the "Submit" button
-  Then I should see the home page
+  Then I should see "Login Successful" message
 
 
 @1123487
 Scenario Outline: login with invalid user name and password
   Given I am on the login page
-  When I enter "invalidUser" as user name
-  And I enter "invalidPassword" as password
+  When I enter "<invalidUser>" as user name
+  And I enter "<invalidPassword>" as password
   And I click on the "Submit" button
-  Then I should see an error message indicating invalid credentials
+  Then I should see "Login Unsuccessful" message
 
 Examples:
     | invalidUser  | invalidPassword |

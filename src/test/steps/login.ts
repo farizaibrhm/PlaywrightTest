@@ -26,8 +26,15 @@ When('I click on the {string} button', async function (this: CustomWorld, button
   }
 });
 
-Then('I should see the home page', async function (this: CustomWorld) {
-  await this.page.waitForSelector('h1:has-text("Logged In Successfully")');
-  await this.browser.close();
-  await this.page.setInputFiles
+Then('I should see {string} message', async function (this: CustomWorld, message: string) {
+  if (message === 'Login Successful') {
+    await this.page.waitForSelector('h1:has-text("Logged In Successfully")');
+  } else if (message === 'Login Unsuccessful') {
+    await this.page.waitForSelector('div:has-text("Your username is invalid!")');
+  } else {
+    throw new Error(`Unknown message: ${message}`);
+  }
+
+  await this.browser?.close();
 });
+
