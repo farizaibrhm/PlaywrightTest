@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 import { CustomWorld } from '../world/custom-world';
 
 Given('I am on the login page', async function (this: CustomWorld) {
-  this.browser = await chromium.launch({ headless: false });
+  this.browser = await chromium.launch({ headless: true });
   this.context = await this.browser.newContext();
   this.page = await this.context.newPage();
   await this.page.goto('https://practicetestautomation.com/practice-test-login/');
